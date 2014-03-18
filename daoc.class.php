@@ -22,21 +22,76 @@ if ( !defined('EQDKP_INC') ){
 
 if(!class_exists('daoc')) {
 	class daoc extends game_generic {
-		public static $shortcuts = array();
+		public $version			= '2.0';
 		protected $this_game	= 'daoc';
 		protected $types		= array('classes', 'races', 'factions', 'filters');
-		public $icons			= array('classes', 'classes_big', 'races', 'events');
 		protected $classes		= array();
 		protected $races		= array();
 		protected $factions		= array();
 		protected $filters		= array();
 		public $langs			= array('english');
 
+		protected $class_dependencies = array(
+			array(
+				'name'		=> 'faction',
+				'type'		=> 'factions',
+				'admin' 	=> true,
+				'decorate'	=> false,
+				'parent'	=> false,
+			),
+			array(
+				'name'		=> 'race',
+				'type'		=> 'races',
+				'admin'		=> false,
+				'decorate'	=> true,
+				'parent'	=> array(
+					'faction' => array(
+						'albion'	=> 'all',
+						'hibernia'	=> 'all',
+						'midgard'	=> 'all'
+					),
+				),
+			),
+			array(
+				'name'		=> 'class',
+				'type'		=> 'classes',
+				'admin'		=> false,
+				'decorate'	=> true,
+				'primary'	=> true,
+				'colorize'	=> true,
+				'roster'	=> true,
+				'recruitment' => true,
+				'parent'	=> array(
+					'race' => array(
+						0 	=> 'all',			// Unknown
+						1 	=> 'all',			// Avalonian
+						2 	=> 'all',			// Briton
+						3 	=> 'all',			// Half Ogre
+						4 	=> 'all',			// Highlander
+						5 	=> 'all',			// Inconnu
+						6 	=> 'all',			// Saracen
+						7 	=> 'all',			// Celt
+						8 	=> 'all',			// Elf
+						9 	=> 'all',			// Firbolg
+						10 	=> 'all',			// Lurikeen
+						11 	=> 'all',			// Shar
+						12 	=> 'all',			// Sylvan
+						13 	=> 'all',			// Dwarf
+						14 	=> 'all',			// Frostalf
+						15 	=> 'all',			// Kobold
+						16 	=> 'all',			// Norse
+						17	=> 'all',			// Troll
+						18	=> 'all',			// Valkyn
+						19 	=> 'all',			// Minitaur
+					),
+				),
+			),
+		);
+
 		protected $glang		= array();
 		protected $lang_file	= array();
 		protected $path			= false;
 		public $lang			= false;
-		public $version			= '2.0';
 
 		/**
 		* Initialises filters
@@ -68,5 +123,4 @@ if(!class_exists('daoc')) {
 		}
 	}
 }
-if(version_compare(PHP_VERSION, '5.3.0', '<')) registry::add_const('short_daoc', daoc::$shortcuts);
 ?>
