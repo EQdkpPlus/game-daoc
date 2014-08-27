@@ -4,15 +4,14 @@
  * License:		Creative Commons - Attribution-Noncommercial-Share Alike 3.0 Unported
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
- * Began:		2009
  * Date:		$Date$
  * -----------------------------------------------------------------------
  * @author		$Author$
- * @copyright	2006-2011 EQdkp-Plus Developer Team
+ * @copyright	2006-2014 EQdkp-Plus Developer Team
  * @link		http://eqdkp-plus.com
  * @package		eqdkp-plus
  * @version		$Rev$
- * 
+ *
  * $Id$
  */
 
@@ -22,14 +21,15 @@ if ( !defined('EQDKP_INC') ){
 
 if(!class_exists('daoc')) {
 	class daoc extends game_generic {
-		public $version			= '2.0';
-		protected $this_game	= 'daoc';
-		protected $types		= array('classes', 'races', 'factions', 'filters');
-		protected $classes		= array();
-		protected $races		= array();
-		protected $factions		= array();
-		protected $filters		= array();
-		public $langs			= array('english');
+		protected static $apiLevel	= 20;
+		public $version				= '2.0';
+		protected $this_game		= 'daoc';
+		protected $types			= array('classes', 'races', 'factions', 'filters');
+		protected $classes			= array();
+		protected $races			= array();
+		protected $factions			= array();
+		protected $filters			= array();
+		public $langs				= array('english');
 
 		protected $class_dependencies = array(
 			array(
@@ -93,11 +93,6 @@ if(!class_exists('daoc')) {
 		protected $path			= false;
 		public $lang			= false;
 
-		/**
-		* Initialises filters
-		*
-		* @param array $langs
-		*/
 		protected function load_filters($langs){
 			if(!$this->classes) {
 				$this->load_type('classes', $langs);
@@ -111,16 +106,7 @@ if(!class_exists('daoc')) {
 			}
 		}
 
-		public function install($install=false){
-		
-			
-			
-			/*
-			//Do this SQL Query NOT if the Eqdkp is installed -> only @ the first install
-			if($install){
-			}*/
-			return $info;
-		}
+		public function install($install=false){}
 	}
 }
 ?>
