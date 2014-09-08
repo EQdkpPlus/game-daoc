@@ -95,7 +95,14 @@ $english_array = array(
 		'midgard'	=> 'Midgard'
 	),
 	'lang' => array(
-		'daoc'			=> 'Dark Age of Camelot',
+		'daoc'						=> 'Dark Age of Camelot',
+		'uc_race'					=> 'Race',
+		'uc_class'					=> 'Class',
+
+		// Admin Settings
+		'core_sett_fs_gamesettings'	=> 'Dark Age of Camelot Settings',
+		'uc_faction'				=> 'Faction',
+		'uc_faction_help'			=> 'Select the default faction',
 	),
 );
 ?>
