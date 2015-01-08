@@ -26,7 +26,7 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('daoc')) {
 	class daoc extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '2.0';
+		public $version				= '2.1.0';
 		protected $this_game		= 'daoc';
 		protected $types			= array('classes', 'races', 'factions', 'filters');
 		protected $classes			= array();
